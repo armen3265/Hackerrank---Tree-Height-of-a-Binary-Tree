@@ -40,9 +40,9 @@ class Node {
 };
 
 */
-    typedef pair<Node,int> myPair;
+    typedef pair<Node*,int> myPair;
     int height(Node* root) {
-        myPair heights(*root,0);
+        myPair heights(root,0);
         int height = 0;
         
         stack<myPair> st;
@@ -53,14 +53,14 @@ class Node {
         {
             myPair temp = st.top();
             st.pop();
-            if(temp.first.left)
+            if(temp.first->left)
             {
-                myPair left(*temp.first.left, temp.second + 1);
+                myPair left(temp.first->left, temp.second + 1);
                 st.push(left);
             }
-            if(temp.first.right)
+            if(temp.first->right)
             {
-                myPair right(*temp.first.right, temp.second + 1);
+                myPair right(temp.first->right, temp.second + 1);
                 st.push(right);
             }
             if(height < temp.second)
